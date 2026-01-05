@@ -1,53 +1,67 @@
-# Raspberry Pi Scam Detection System (scaffold)
+# 🤖 Project Penny: AI-Powered Financial Fraud Detection
 
-This repository contains a scaffold for an AI-powered scam detection system that runs on Raspberry Pi 5 with an AI Hat.
+**🏆 Winner: Best Project — USC MAIA Demo Day (Fall 2025)** Recognised by a judging panel of engineers from Netflix and Google for technical rigour, market viability, and tangible impact on senior digital safety.
 
-Architecture split
-- `frontend/` - Expo-managed React Native app (placeholder UI). Use Expo Go to run the mobile frontend.
-- `backend/` - documentation for the Python backend (existing code currently lives at the repository root and `src/`).
+---
 
-Purpose
-- Monitor VOIP phone calls and email (IMAP) for potential fraud targeting elderly nursing home residents.
-- Provide real-time alerts (audio + visual) and a lightweight dashboard for caregivers.
+## 📌 Project Overview
+Project Penny is a comprehensive hardware-software ecosystem designed to protect elderly residents in nursing homes from financial fraud. By combining real-time audio processing with machine learning classification, Penny detects scam indicators in VOIP calls and instantly alerts caregivers via a mobile dashboard.
 
-What is included
-- `frontend/` - minimal Expo app scaffold (placeholder UI).
-- `src/` - Python package containing modules for audio, email, detection (training + inference), alerts, web dashboard, and configuration.
-- `requirements.txt` - list of libraries to install (see notes below).
-- `main.py` - example orchestrator wiring components for a simple demo.
+* **Organisation:** Marshall AI Association (MAIA) — Finance Department, USC
+* **Role:** Audio Processing Engineer & iOS Frontend Developer
+* **Stack:** Python, Raspberry Pi 5, React Native (Expo), DistilBERT, Supabase, VOSK
 
-How to start (development)
-Backend (Python)
-1. Create a Python virtual environment on the Pi and activate it.
-2. Install dependencies (some packages require platform-specific wheels on the Pi).
+---
 
-  pip install -r requirements.txt
+## ⚠️ The Problem
+Approximately **$28.3 billion** is stolen annually from Americans over the age of 60 via financial fraud. Seniors in assisted living facilities are primary targets for sophisticated scams that exploit cognitive vulnerabilities.
 
-3. Edit configuration in `src/config/*_config.py` for your environment (IMAP creds, model paths, GPIO pins).
-4. Start the orchestrator (development):
+---
 
-  python main.py
+## 💡 The Solution
+Penny provides a multi-layered defence system:
+* **Hardware Monitoring:** A Raspberry Pi-powered device monitors VOIP streams for high-signal scam indicators.
+* **Immediate Feedback:** Physical GPIO stoplight indicators provide visual status for residents.
+* **Caregiver Triage:** A React Native iOS application provides nursing home staff with real-time push notifications and a facility-wide risk dashboard.
 
-Frontend (Expo)
-1. Install Expo CLI locally if you plan to develop the mobile app:
 
-  npm install -g expo-cli
 
-2. Open the frontend folder and install dependencies:
+---
 
-  cd frontend
-  npm install
+## 🛠 Technical Contributions
 
-3. Start Expo and open in Expo Go or an emulator:
+### 1. Audio Processing Pipeline (`backend/`)
+I engineered the system to ensure high-fidelity data capture for ML inference while maintaining strict resident privacy.
+* **Signal Processing:** Implemented 300-3400 Hz bandpass filters using `scipy` to isolate human speech.
+* **Performance:** Architected a producer-consumer threading pattern with thread-safe queues to maintain <20ms latency.
+* **Privacy-First STT:** Integrated **VOSK** for local Speech-to-Text transcription, ensuring no private audio data leaves the local network.
 
-  npm start
+### 2. iOS Mobile Application (`frontend/`)
+Co-developed a 7-screen caregiver interface focused on high-speed monitoring and triage.
+* **Live Alerts:** Colour-coded risk levels (High, Medium, Low) with instant push notifications.
+* **Facility Dashboard:** Overview of 40+ residents per facility, active alerts, and weekly safety summaries.
+* **Platform:** Built using React Native and Expo Go for rapid deployment to nursing home staff devices.
 
-Notes and next steps
-- This scaffold contains detailed inline comments and TODOs for each module owner. It is intentionally minimal and meant to be extended.
-- I did not move your existing Python files. If you want me to relocate the backend code into `backend/` and update imports, say so and I'll perform the relocation.
-- For production use you should:
-  - Replace placeholder inference with actual Hugging Face model loading and quantization for Pi performance.
-  - Use a proper process supervisor (systemd) and restrict privileges for network/IMAP access.
-  - Add unit tests, CI, and hardware-in-the-loop tests for GPIO/audio.
+### 3. Cloud Infrastructure (`supabase/`)
+* **Real-time Sync:** Integrated Supabase for remote ML inference and data storage.
+* **Infrastructure as Code:** Managed Supabase integrations and automated workflows via GitHub Actions.
 
-# raspberry-pi-voice-system
+---
+
+## 📂 Repository Structure
+* **`backend/`**: Python core logic for signal processing and speech-to-text.
+* **`frontend/`**: React Native (Expo) source code for the caregiver mobile application.
+* **`supabase/`**: Database schema, edge functions, and cloud integrations.
+* **`src/`**: Shared source components and utility functions.
+* **`MAIA_PENNY_PROJECT.pdf`**: Full technical case study and pitch deck.
+
+
+---
+
+## 🔗 Resources
+* [Download Full Case Study PDF (Direct)](https://github.com/omatasie/penny-fraud-detection-system/raw/main/MAIA_PENNY_PROJECT.pdf)
+* [Main Portfolio Hub](https://github.com/omatasie/oma_tasie_portfolio)
+
+---
+
+*Developed by Oma Tasie-Amadi and Team @ USC Marshall AI Association. Because Every Penny Matters.*
