@@ -59,7 +59,7 @@ Co-developed a 7-screen caregiver interface focused on high-speed monitoring and
 ---
 
 ## 🔗 Resources
-* [Download Full Case Study PDF (Direct)](https://github.com/omatasie/penny-fraud-detection-system/raw/main/MAIA_PENNY_PROJECT.pdf)
+* [**Full Case Study Deck (Interactive Preview)**](https://drive.google.com/file/d/1mkdHl195nxZl4Q1QlQAQ8YxHY1EbaRjb/view?usp=sharing)
 * [Main Portfolio Hub](https://github.com/omatasie/oma_tasie_portfolio)
 
 ---
